@@ -1,12 +1,13 @@
 // src/api.js
 import axios from 'axios';
+import { APIENDPOINT } from '../utils/constants';
 
-export const apiCall = async (url, method, data) => {
+export const apiCall = async (endpoint, method, data) => {
     try {
         const response = await axios({
-            url: url,
+            url: `${APIENDPOINT}${endpoint}`, // Use the base URL and append the endpoint
             method: method,
-            data: data
+            data: data,
         });
         return { data: response.data, error: null };
     } catch (error) {
